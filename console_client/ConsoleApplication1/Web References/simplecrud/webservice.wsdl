@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://localhost/soap/simpleService" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://localhost/soap/simpleService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://localhost/soap/simpleService">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="conexionMysql.createRequest">
+    <wsdl:part name="nombre" type="xsd:string" />
+    <wsdl:part name="telefono" type="xsd:string" />
+    <wsdl:part name="direccion" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+    <wsdl:part name="email" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="conexionMysql.createResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="conexionMysql.readRequest" />
+  <wsdl:message name="conexionMysql.readResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="conexionMysql.updateRequest">
+    <wsdl:part name="id" type="xsd:int" />
+    <wsdl:part name="nombre" type="xsd:string" />
+    <wsdl:part name="telefono" type="xsd:string" />
+    <wsdl:part name="direccion" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="conexionMysql.updateResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="conexionMysql.deleteRequest">
+    <wsdl:part name="id" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="conexionMysql.deleteResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:portType name="simpleServicePortType">
+    <wsdl:operation name="conexionMysql.create">
+      <documentation>Insert record in table</documentation>
+      <wsdl:input message="tns:conexionMysql.createRequest" />
+      <wsdl:output message="tns:conexionMysql.createResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="conexionMysql.read">
+      <documentation>Return content from table Usuarios_datos</documentation>
+      <wsdl:input message="tns:conexionMysql.readRequest" />
+      <wsdl:output message="tns:conexionMysql.readResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="conexionMysql.update">
+      <documentation>Update selected record</documentation>
+      <wsdl:input message="tns:conexionMysql.updateRequest" />
+      <wsdl:output message="tns:conexionMysql.updateResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="conexionMysql.delete">
+      <documentation>Delete selected record</documentation>
+      <wsdl:input message="tns:conexionMysql.deleteRequest" />
+      <wsdl:output message="tns:conexionMysql.deleteResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="simpleServiceBinding" type="tns:simpleServicePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="conexionMysql.create">
+      <soap:operation soapAction="http://localhost/webservice/includes/webservice.php/conexionMysql.create" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://localhost/webservice/includes/webservice.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://localhost/webservice/includes/webservice.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="conexionMysql.read">
+      <soap:operation soapAction="http://localhost/webservice/includes/webservice.php/conexionMysql.read" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://localhost/webservice/includes/webservice.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://localhost/webservice/includes/webservice.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="conexionMysql.update">
+      <soap:operation soapAction="http://localhost/webservice/includes/webservice.php/conexionMysql.update" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://localhost/webservice/includes/webservice.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://localhost/webservice/includes/webservice.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="conexionMysql.delete">
+      <soap:operation soapAction="http://localhost/webservice/includes/webservice.php/conexionMysql.delete" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://localhost/webservice/includes/webservice.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://localhost/webservice/includes/webservice.php?wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="simpleService">
+    <wsdl:port name="simpleServicePort" binding="tns:simpleServiceBinding">
+      <soap:address location="http://localhost/webservice/includes/webservice.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
